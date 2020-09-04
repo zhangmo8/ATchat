@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // components
 import 'package:flutterdemo/components/Input/index.dart';
 
+// api
+import 'package:flutterdemo/server/api/Account.dart';
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
 
@@ -44,9 +47,14 @@ class _LoginPageState extends State<LoginPage> {
                     print("登录");
                   },
                   child: Text("登录")),
-              OutlineButton(onPressed: (){
-                print("注册");
-              }, child: Text("注册"))
+              OutlineButton(
+                  onPressed: () {
+                    print("注册");
+                    AccountServe.login(userInfo: {}).then((res) {
+                      print("这个接口的结果$res");
+                    });
+                  },
+                  child: Text("注册"))
             ],
           )),
     );
