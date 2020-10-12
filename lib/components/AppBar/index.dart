@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 这是一个可以指定SafeArea区域背景色的AppBar
 /// PreferredSizeWidget提供指定高度的方法
@@ -11,9 +10,11 @@ class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   final Widget leadingWidget;
   final Widget trailingWidget;
   final String title;
+  final bool centerTitle;
   CustomAppbar({
     @required this.leadingWidget,
     this.title,
+    this.centerTitle = false,
     this.contentHeight = 44,
     this.navigationBarBackgroundColor = Colors.white,
     this.trailingWidget,
@@ -45,7 +46,11 @@ class _CustomAppbarState extends State<CustomAppbar> {
       child: widget.title != null
           ? Container(
               child: Text(widget.title,
-                  style: TextStyle(fontSize: 17, color: Color(0xFF333333))),
+                  textAlign:
+                      widget.centerTitle ? TextAlign.center : TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 17,
+                      color: Color(0xFF333333),)),
             )
           : SizedBox(),
     );

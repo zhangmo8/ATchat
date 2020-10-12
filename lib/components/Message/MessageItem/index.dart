@@ -58,6 +58,10 @@ class MessageItemTile {
       key: Key('massageList$i'),
       closeTag: LeftScrollCloseTag('tag'),
       child: ListTile(
+        onTap: () {
+            BotToast.showText(text: "dial    $item");
+          print("diale    $item");
+        },
         leading: UserHead(size: 40),
         title: Text("${item["name"]}"),
         subtitle: Text(

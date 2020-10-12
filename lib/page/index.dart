@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    checkToken();
+    // checkToken();
     super.initState();
   }
 
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (token != "" && token.length > 0) {
     } else {
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => MessagePage()),
           (Route<dynamic> route) => false);
     }
   }
