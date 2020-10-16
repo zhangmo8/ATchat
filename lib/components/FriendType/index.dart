@@ -1,50 +1,94 @@
 import 'package:flutter/material.dart';
+// pkg
+import 'package:flutter_collapse/flutter_collapse.dart';
 
-class FriendTypes extends StatelessWidget {
-  const FriendTypes({Key key}) : super(key: key);
+import 'package:flutterdemo/components/UserHead/index.dart';
+
+class FriendTypes extends StatefulWidget {
+  FriendTypes({Key key}) : super(key: key);
+
+  @override
+  _FriendTypesState createState() => _FriendTypesState();
+}
+
+class _FriendTypesState extends State<FriendTypes> {
+  List typeList = [
+    {
+      "title": "好友",
+      "value": false,
+      "children": [
+        {"userName": "张三", "message": "在吗?GG", "time": "17:15:00"},
+        {"userName": "李四", "message": "借我点钱", "time": "17:15:00"},
+        {"userName": "王五", "message": "我下个月结婚", "time": "17:15:00"},
+        {"userName": "赵刘", "message": "GTU冲", "time": "17:15:00"},
+      ],
+    },
+    {
+      "title": "同学",
+      "value": false,
+      "children": [
+        {"userName": "张楚岚", "message": "在吗?GG", "time": "17:15:00"},
+        {"userName": "张子凡", "message": "借我点钱", "time": "17:15:00"},
+        {"userName": "灵烟", "message": "我下个月结婚", "time": "17:15:00"},
+        {"userName": "宝儿姐", "message": "GTU冲", "time": "17:15:00"},
+      ],
+    },
+    {
+      "title": "亲人",
+      "value": false,
+      "children": [
+        {"userName": "无敌的芥末", "message": "啥时候回家?", "time": "17:15:00"},
+        {"userName": "爱施德", "message": "还有钱花么?", "time": "17:15:00"},
+      ],
+    },
+  ];
+
+  List<Widget> renderType(List childList) {
+    return childList
+        .map(
+          (e) => ListTile(
+            leading: UserHead(size: 40.0),
+            title: Text(e["userName"]),
+            subtitle: Text(e["message"]),
+            trailing: Text(
+              e["time"],
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+        )
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       top: true,
       child: Container(
-          decoration: UnderlineTabIndicator(
-            borderSide: BorderSide(width: 1.0, color: Color(0xFFeeeeee)),
-          ),
-          child: Text("分类列表")),
+        decoration: UnderlineTabIndicator(
+          borderSide: BorderSide(width: 1.0, color: Color(0xFFeeeeee)),
+        ),
+        child: ListView.builder(
+          itemCount: typeList.length,
+          itemBuilder: (content, index) {
+            final e = typeList[index];
+            return Collapse(
+              title: Text(
+                e["title"],
+                style: TextStyle(color: Colors.black),
+              ),
+              body: Column(children: renderType(e["children"])),
+              value: e["value"],
+              onChange: (v) {
+                final i = typeList
+                    .indexWhere((element) => element["title"] == e["title"]);
+                setState(() {
+                  typeList[i]["value"] = v;
+                });
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 }
-
-// @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: new EdgeInsets.only(bottom: 20.0),
-//       height: 100.0.h,
-//       child: new ListView(
-//         scrollDirection: Axis.horizontal,
-//         children: <Widget>[
-//           new Container(
-//             width: 160.0.w,
-//             color: Colors.red,
-//           ),
-//           new Container(
-//             width: 160.0.w,
-//             color: Colors.blue,
-//           ),
-//           new Container(
-//             width: 160.0.w,
-//             color: Colors.green,
-//           ),
-//           new Container(
-//             width: 160.0.w,
-//             color: Colors.yellow,
-//           ),
-//           new Container(
-//             width: 160.0.w,
-//             color: Colors.orange,
-//           ),
-//         ],
-//       ),
-//     );
-//   }

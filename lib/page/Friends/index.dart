@@ -34,7 +34,7 @@ class _FriendsPageState extends State<FriendsPage> {
           ),
           child: Column(children: [
             Container(child: Search()),
-            FriendTypes(),
+            Expanded(child: FriendTypes()),
           ])),
     );
   }

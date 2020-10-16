@@ -59,8 +59,7 @@ class MessageItemTile {
       closeTag: LeftScrollCloseTag('tag'),
       child: ListTile(
         onTap: () {
-            BotToast.showText(text: "dial    $item");
-          print("diale    $item");
+          BotToast.showText(text: "dial    $item");
         },
         leading: UserHead(size: 40),
         title: Text("${item["name"]}"),

@@ -30,6 +30,7 @@ dependencies:
   dio: ^3.0.10 # 请求库 github => https://github.com/flutterchina/dio/blob/master/README-ZH.md
   shared_preferences: ^0.5.10 # 本地化存储 github => https://github.com/flutter/plugins/tree/master/packages/shared_preferences/shared_preferences
   provider: ^4.1.2 # 状态管理 github => https://github.com/rrousselGit/provider
+  flutter_collapse: 0.1.1 # 自定义折叠面板  github => https://github.com/meetqy/flutter_collapse
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
