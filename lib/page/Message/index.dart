@@ -5,6 +5,7 @@ import 'package:flutterdemo/components/AppBar/index.dart';
 import 'package:flutterdemo/components/Message/MessageItem/index.dart';
 import 'package:flutterdemo/components/Search/index.dart';
 import 'package:flutterdemo/components/UserHead/UserInfo.dart';
+import 'package:flutterdemo/utils/NoSrollOver.dart';
 
 class MessagePage extends StatefulWidget {
   MessagePage({Key key}) : super(key: key);
@@ -46,10 +47,14 @@ class _MessagePageState extends State<MessagePage> {
           child: Column(children: [
             Container(child: Search()),
             Expanded(
+              child: ScrollConfiguration(
+                behavior: NoShadowScrollBehavior(),
                 child: ListView.builder(
                     itemBuilder: (build, index) =>
                         MessageItemTile.tileBuild(massageList[index], index),
-                    itemCount: massageList.length))
+                    itemCount: massageList.length),
+              ),
+            )
           ])),
     );
   }

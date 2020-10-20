@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_collapse/flutter_collapse.dart';
 
 import 'package:flutterdemo/components/UserHead/index.dart';
+import 'package:flutterdemo/utils/NoSrollOver.dart';
 
 class FriendTypes extends StatefulWidget {
   FriendTypes({Key key}) : super(key: key);
@@ -48,7 +49,10 @@ class _FriendTypesState extends State<FriendTypes> {
         .map(
           (e) => ListTile(
             contentPadding: EdgeInsets.zero,
-            leading: UserHead(size: 40.0, onTap: (){},),
+            leading: UserHead(
+              size: 40.0,
+              onTap: () {},
+            ),
             title: Text(e["userName"]),
             subtitle: Text(e["message"]),
             trailing: Text(
@@ -68,26 +72,29 @@ class _FriendTypesState extends State<FriendTypes> {
         decoration: UnderlineTabIndicator(
           borderSide: BorderSide(width: 1.0, color: Color(0xFFeeeeee)),
         ),
-        child: ListView.builder(
-          itemCount: typeList.length,
-          itemBuilder: (content, index) {
-            final e = typeList[index];
-            return Collapse(
-              title: Text(
-                e["title"],
-                style: TextStyle(color: Colors.black),
-              ),
-              body: Column(children: renderType(e["children"])),
-              value: e["value"],
-              onChange: (v) {
-                final i = typeList
-                    .indexWhere((element) => element["title"] == e["title"]);
-                setState(() {
-                  typeList[i]["value"] = v;
-                });
-              },
-            );
-          },
+        child: ScrollConfiguration(
+          behavior: NoShadowScrollBehavior(),
+          child: ListView.builder(
+            itemCount: typeList.length,
+            itemBuilder: (content, index) {
+              final e = typeList[index];
+              return Collapse(
+                title: Text(
+                  e["title"],
+                  style: TextStyle(color: Colors.black),
+                ),
+                body: Column(children: renderType(e["children"])),
+                value: e["value"],
+                onChange: (v) {
+                  final i = typeList
+                      .indexWhere((element) => element["title"] == e["title"]);
+                  setState(() {
+                    typeList[i]["value"] = v;
+                  });
+                },
+              );
+            },
+          ),
         ),
       ),
     );
