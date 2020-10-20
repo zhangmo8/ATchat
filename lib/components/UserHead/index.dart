@@ -11,7 +11,9 @@ class UserHead extends StatelessWidget {
         width: size,
         height: size,
         child: InkWell(
-            onTap: () => Scaffold.of(context).openDrawer(),
+            onTap: () {
+              onTap();
+            },
             child: CircleAvatar(
               //头像图片 -> NetworkImage网络图片，AssetImage项目资源包图片, FileImage本地存储图片
               backgroundImage: NetworkImage(

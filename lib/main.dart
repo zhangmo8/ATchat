@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // SharedPreferences.setMockInitialValues({});
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         builder: BotToastInit(),
         home: MyHomePage(),

@@ -47,7 +47,8 @@ class _FriendTypesState extends State<FriendTypes> {
     return childList
         .map(
           (e) => ListTile(
-            leading: UserHead(size: 40.0),
+            contentPadding: EdgeInsets.zero,
+            leading: UserHead(size: 40.0, onTap: (){},),
             title: Text(e["userName"]),
             subtitle: Text(e["message"]),
             trailing: Text(

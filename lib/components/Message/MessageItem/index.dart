@@ -61,7 +61,10 @@ class MessageItemTile {
         onTap: () {
           BotToast.showText(text: "dial    $item");
         },
-        leading: UserHead(size: 40),
+        leading: UserHead(
+          size: 40,
+          onTap: () {},
+        ),
         title: Text("${item["name"]}"),
         subtitle: Text(
           "${item["message"]}",
@@ -90,33 +93,3 @@ class MessageItemTile {
     );
   }
 }
-
-// // 自定义列表
-// _listBuild(i) {
-//   final e = massageList[i];
-//   return CupertinoLeftScroll(
-//     bounce: true,
-//     key: Key('massageList$i'),
-//     closeTag: LeftScrollCloseTag('TODO: your tag'),
-//     buttonWidth: 80,
-//     child: MessageItem(
-//       itemData: e,
-//     ),
-//     buttons: [
-//       LeftScrollItem(
-//         text: 'edit',
-//         color: Colors.orange,
-//         onTap: () {
-//           print('edit');
-//         },
-//       ),
-//       LeftScrollItem(
-//         text: 'delete',
-//         color: Colors.red,
-//         onTap: () {
-//           print('delete');
-//         },
-//       ),
-//     ],
-//   );
-// }

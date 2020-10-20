@@ -36,13 +36,7 @@ class _MessagePageState extends State<MessagePage> {
       appBar: CustomAppbar(
         title: "995",
         leadingWidget: UserInfo.userHead,
-        trailingWidget: Container(
-            width: 30,
-            height: 30,
-            child: IconButton(
-                padding: EdgeInsets.zero,
-                icon: Icon(Icons.add),
-                onPressed: UserInfo.addFriend)),
+        trailingWidget: UserInfo.popMenu(),
       ),
       drawer: UserInfo.drawer,
       body: Container(

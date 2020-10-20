@@ -19,13 +19,7 @@ class _FriendsPageState extends State<FriendsPage> {
         centerTitle: true,
         title: "联系人",
         leadingWidget: UserInfo.userHead,
-        trailingWidget: Container(
-            width: 30,
-            height: 30,
-            child: IconButton(
-                padding: EdgeInsets.zero,
-                icon: Icon(Icons.add),
-                onPressed: UserInfo.addFriend)),
+        trailingWidget: UserInfo.popMenu(),
       ),
       drawer: UserInfo.drawer,
       body: Container(
