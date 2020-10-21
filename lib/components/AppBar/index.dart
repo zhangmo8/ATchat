@@ -12,7 +12,7 @@ class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final bool centerTitle;
   CustomAppbar({
-    @required this.leadingWidget,
+    this.leadingWidget,
     this.title,
     this.centerTitle = false,
     this.contentHeight = 44,
@@ -49,8 +49,9 @@ class _CustomAppbarState extends State<CustomAppbar> {
                   textAlign:
                       widget.centerTitle ? TextAlign.center : TextAlign.left,
                   style: TextStyle(
-                      fontSize: 17,
-                      color: Color(0xFF333333),)),
+                    fontSize: 17,
+                    color: Color(0xFF333333),
+                  )),
             )
           : SizedBox(),
     );
@@ -63,23 +64,24 @@ class _CustomAppbarState extends State<CustomAppbar> {
       child: SafeArea(
         top: true,
         child: Container(
-            decoration: UnderlineTabIndicator(
-              borderSide: BorderSide(width: 1.0, color: Color(0xFFeeeeee)),
-            ),
-            height: widget.contentHeight,
-            child: Row(
-              children: <Widget>[
-                Container(
-                  padding: padding,
-                  child: widget.leadingWidget,
-                ),
-                renderTitle(),
-                Container(
-                  padding: padding,
-                  child: widget.trailingWidget,
-                ),
-              ],
-            )),
+          decoration: UnderlineTabIndicator(
+            borderSide: BorderSide(width: 1.0, color: Color(0xFFeeeeee)),
+          ),
+          height: widget.contentHeight,
+          child: Row(
+            children: <Widget>[
+              Container(
+                padding: padding,
+                child: widget.leadingWidget,
+              ),
+              renderTitle(),
+              Container(
+                padding: padding,
+                child: widget.trailingWidget,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

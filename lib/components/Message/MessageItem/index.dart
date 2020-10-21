@@ -52,14 +52,14 @@ class OtherInfo extends StatelessWidget {
 }
 
 class MessageItemTile {
-  static tileBuild(Map item, int i) {
+  static tileBuild(Map item, int i, {Function onTap}) {
     return CupertinoLeftScroll(
       bounce: true,
       key: Key('massageList$i'),
       closeTag: LeftScrollCloseTag('tag'),
       child: ListTile(
         onTap: () {
-          BotToast.showText(text: "dial    $item");
+          if (onTap != null) onTap(item);
         },
         leading: UserHead(
           size: 40,

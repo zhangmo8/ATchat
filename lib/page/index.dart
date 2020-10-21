@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // pages
@@ -42,20 +43,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
-    return Scaffold(
-      body: PageView(
-          controller: _controller,
-          physics: NeverScrollableScrollPhysics(),
-          children: [MessagePage(), FriendsPage()]),
-      bottomNavigationBar: BottomNavigationBar(
-        // 底部导航
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.textsms), title: Text('消息')),
-          BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('好友')),
-        ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colors.blue,
-        onTap: _onItemTapped,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        body: PageView(
+            controller: _controller,
+            physics: NeverScrollableScrollPhysics(),
+            children: [MessagePage(), FriendsPage()]),
+        bottomNavigationBar: BottomNavigationBar(
+          // 底部导航
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.textsms), title: Text('消息')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.people), title: Text('好友')),
+          ],
+          currentIndex: _selectedIndex,
+          fixedColor: Colors.blue,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
