@@ -24,6 +24,31 @@ class _MessageInputState extends State<MessageInput> {
 
   final TextEditingController _controller = TextEditingController();
 
+  bool voiceShow = false;
+
+  Widget content() {
+    if (!voiceShow) {
+      return Container(
+        child: TextField(
+          controller: _controller,
+          decoration: messageInputClass,
+          maxLines: null,
+          keyboardType: TextInputType.multiline,
+        ),
+      );
+    } else {
+      return RaisedButton(
+        child: Text(
+          "请按住说话",
+          textAlign: TextAlign.center,
+        ),
+        onPressed: () {
+          BotToast.showText(text: "少说两句吧");
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,17 +56,16 @@ class _MessageInputState extends State<MessageInput> {
       decoration: BoxDecoration(color: Colors.grey[200]),
       child: Row(
         children: [
-          Expanded(
-            child: Container(
-              child: TextField(
-                controller: _controller,
-                decoration: messageInputClass,
-                maxLines: null,
-                keyboardType: TextInputType.multiline,
-              ),
-            ),
+          IconButton(
+            icon: Icon(
+                voiceShow ? Icons.keyboard : Icons.keyboard_voice_outlined),
+            onPressed: () {
+              setState(() {
+                voiceShow = !voiceShow;
+              });
+            },
           ),
-          SizedBox(width: 20.w),
+          Expanded(child: content()),
           IconButton(
             icon: Icon(Icons.send),
             onPressed: () {

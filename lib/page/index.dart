@@ -47,16 +47,15 @@ class _MyHomePageState extends State<MyHomePage> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         body: PageView(
-            controller: _controller,
-            physics: NeverScrollableScrollPhysics(),
-            children: [MessagePage(), FriendsPage()]),
+          controller: _controller,
+          physics: NeverScrollableScrollPhysics(),
+          children: [MessagePage(), FriendsPage()],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           // 底部导航
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.textsms), title: Text('消息')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.people), title: Text('好友')),
+            BottomNavigationBarItem(icon: Icon(Icons.textsms), label: '消息'),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: '好友'),
           ],
           currentIndex: _selectedIndex,
           fixedColor: Colors.blue,
