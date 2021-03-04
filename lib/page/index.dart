@@ -53,10 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           // 底部导航
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.textsms), title: Text('消息')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.people), title: Text('好友')),
+            BottomNavigationBarItem(icon: Icon(Icons.textsms), label: '消息'),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: '好友'),
           ],
           currentIndex: _selectedIndex,
           fixedColor: Colors.blue,
