@@ -76,20 +76,6 @@ class _MessageInputState extends State<MessageInput> {
             },
           ),
           Expanded(child: getContent()),
-          if (!voiceShow)
-            IconButton(
-              padding: btnPadding,
-              icon: Icon(Icons.send),
-              onPressed: (msg.length == 0 || msg.trim() == "")
-                  ? null
-                  : () {
-                      widget.sendMsg(msg);
-                      setState(() {
-                        msg = "";
-                      });
-                      _controller.clear();
-                    },
-            ),
           IconButton(
             padding: btnPadding,
             icon: Icon(Icons.add_circle_outline),

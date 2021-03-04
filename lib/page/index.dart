@@ -47,9 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         body: PageView(
-            controller: _controller,
-            physics: NeverScrollableScrollPhysics(),
-            children: [MessagePage(), FriendsPage()]),
+          controller: _controller,
+          physics: NeverScrollableScrollPhysics(),
+          children: [MessagePage(), FriendsPage()],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           // 底部导航
           items: <BottomNavigationBarItem>[

@@ -33,7 +33,7 @@ class _MessagePageState extends State<MessagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
-        title: "995",
+        title: "优秀",
         leadingWidget: UserInfo.userHead,
         trailingWidget: UserInfo.popMenu(),
       ),
